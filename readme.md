@@ -1,5 +1,5 @@
 # The Sack programming language
-> Spec v0.0.1 SemVer
+> Spec v0.0.2 SemVer
 
 Sack is a dynamically typed scripting language for beginner programmers that focusses on readability and ease of use over speed.
 
@@ -87,8 +87,15 @@ Comments are lines not executed by the parser that are used to enhance readabili
 - All comments begin with the `#` symbol and end with a newline
 - A comment cannot be the last line of a program
 
+The following are valid comments:
+```
+# hello
+#hello
+
+```
+
 ### If, else, else if
-An conditionals are compiler determined functions which check for a certain function.
+conditionals are compiler determined functions which check for a certain function.
 
 The following are valid conditionals:
 ```
