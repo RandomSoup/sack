@@ -19,7 +19,7 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- String
 	- Number (int)
 	- Decimal (32 bit float)
-- Sack enforces a style guide for improve readability, It is left up to the implementation weather this is a default warn or error.
+- Sack enforces a style guide for improve readability, It is left up to the implementation whether this is a default warn or error.
 
 ## Basic keywords
 
