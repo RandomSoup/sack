@@ -1,5 +1,5 @@
 # The Sack programming language
-> Spec v0.0.2 SemVer
+> Spec v0.0.3 SemVer
 
 Sack is a dynamically typed scripting language for beginner programmers that focusses on readability and ease of use over speed.
 
@@ -15,10 +15,10 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 - Sack does not have inbuilt networking or the ability to import such functionality from other files.
 - Sack's default extension is `.sk` or `.sack`. All others are considered invalid by this spec version.
 - Variable types can be one of the following:
-	- Function
 	- String
 	- Number (int)
 	- Decimal (32 bit float)
+	- Bool (`true` or `false`)
 - Sack enforces a style guide for improve readability, It is left up to the implementation whether this is a default warn or error.
 
 ## Basic keywords
@@ -37,6 +37,27 @@ func add_numbers ( a, b ) {
 
 }
 ```
+
+Functions can not be assigned to variables. The following is **invalid** syntax:
+```
+let add_numbers = function( a, b ) {
+	
+	let c = a + b;
+	return c;
+	
+}
+```
+Functions can return a singular variable using the `return` keyword. Do note that any code after a return is unreachable and will be ignored by the implementation. As such, the following is **invalid** syntax:
+```
+func add_numbers ( a, b ) {
+
+	let c = a + b;
+	return c;
+	print( "hi" );
+
+}
+```
+The previous example is also valid in conditionals.
 
 ### Variables
 
@@ -64,21 +85,41 @@ let b = 0.5;
 let c = 100.25;
 ```
 
+Trailing or leading decimals on numbers are invalid and should be detected as such by the compiler. Because of this, the following are **invalid**
+```
+let a = .1;
+let b = 5.;
+```
+
 ### Logical operators
 
 The following are valid logical operators in sack:
 ```
+# add 1 to variable
 +=
+# Addition
 +
+# Subtract 1 from variable
 -=
+# Subtraction
 -
+# Check equivalency 
 ==
+# Check anti equivalency
 !=
+# Greater than
 >
+# Less than
 <
+# Modulo
 %
+# And
+&&
+# Or
+||
 ```
 By extension `<=` and `>=` are also valid since they are a combination of the geater than and less than operators with the equal operator.
+Operators which check for a condition return a boolean value `true` or `false`.
 
 ### Comments
 Comments are lines not executed by the parser that are used to enhance readability.
@@ -138,6 +179,7 @@ loop ( a in range, ( 1, 100 ) ) {
 - A string added to a string will append the string
 - A string added to a number or a number added to a string will cast the number to a string and then append the string
 - Any operation which contains a number and a decimal will result in a decimal.
+- Semicolons are required to end a non commented line. Function declarations and conditionals do not need them as the closing `}` specifies the end.
 
 ## Sample program(s)
 
