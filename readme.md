@@ -1,5 +1,5 @@
 # The Sack programming language
-> Spec v0.0.3 SemVer
+> Spec v0.0.4 SemVer
 
 Sack is a dynamically typed scripting language for beginner programmers that focusses on readability and ease of use over speed.
 
