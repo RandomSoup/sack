@@ -19,6 +19,7 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- Number (int)
 	- Decimal (32 bit float)
 	- Bool (`true` or `false`)
+	- None (`none`)
 - Sack enforces a style guide for improve readability, It is left up to the implementation whether this is a default warn or error.
 
 ## Basic keywords
@@ -91,15 +92,45 @@ let a = .1;
 let b = 5.;
 ```
 
+- Boolean values are returnable from functions and conditionals, they represent `true` or `false` values
+The following are valid booleans:
+```
+let a = true;
+let b = false;
+```
+Because booleans are case sensitive, the following are **invalid**
+```
+let a = True;
+let b = fAlSe;
+```
+
+- None is the default return value for functions, it represents no value.
+The following is a function that returns none:
+```
+func a () {
+	
+	print( "hi" );
+	
+}
+```
+You can also return none from a failed conditional, like so:
+```
+if a > b {
+
+	return none;
+
+}
+```
+
 ### Logical operators
 
 The following are valid logical operators in sack:
 ```
-# add 1 to variable
+# add to identifier
 +=
 # Addition
 +
-# Subtract 1 from variable
+# Subtract from identifier
 -=
 # Subtraction
 -
@@ -136,11 +167,11 @@ The following are valid comments:
 ```
 
 ### If, else, else if
-conditionals are compiler determined functions which check for a certain function.
+Conditionals are compiler determined functions which check for a certain function.
 
 The following are valid conditionals:
 ```
-if ( 2 > 1 ) {
+if 2 > 1 {
 
  print ( "hello" );
 
@@ -180,6 +211,8 @@ loop ( a in range, ( 1, 100 ) ) {
 - A string added to a number or a number added to a string will cast the number to a string and then append the string
 - Any operation which contains a number and a decimal will result in a decimal.
 - Semicolons are required to end a non commented line. Function declarations and conditionals do not need them as the closing `}` specifies the end.
+- Naming
+	- Identifiers may be given any alphanumeric name that does not start with a number. Underscores are allowed anywhere in the variable name
 
 ## Sample program(s)
 
