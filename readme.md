@@ -218,7 +218,7 @@ loop ( a in range, ( 1, 100 ) ) {
 
 FizzBuzz:
 ```
-funct checker ( num ) {
+func checker ( num ) {
   if ( num % 15 ) {
     print ( "FizzBuzz" )
   }
@@ -233,7 +233,7 @@ funct checker ( num ) {
   }    
 }
 
-loop ( num in range, ( 1, 100 ) ) {
+loop ( num in range( 1, 100 ) ) {
   checker ( num );
 }
 ```
