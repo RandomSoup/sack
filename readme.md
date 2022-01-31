@@ -195,7 +195,7 @@ The following are valid print statements:
 ```
 print ( "hello" );
 print ( 42 );
-print ( a );  # Only valid if the variable "a" is defined.
+print ( a );  # Only valid if the variable "a" is defined, else it returns an error and the program stops.
 ```
 
 ### Loops
@@ -264,11 +264,12 @@ func helloworld(){
 
 and in exampleProgram.sk:
 ```
-import("exampleModule");
+import ( "exampleModule" );
 helloworld();
 ```
 
-You can only import modules that are in the current directory
+You can import modules that are in the current directory without specifying the path to the file, else you will need to specify the path.
+By default sack tries to import modlues ending with ".sk".
 
 
 ### Quirks
