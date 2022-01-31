@@ -1,5 +1,5 @@
 # The Sack programming language
-> Spec v0.0.4 SemVer
+> Spec v0.0.5 SemVer
 
 Sack is a dynamically typed scripting language for beginner programmers that focusses on readability and ease of use over speed.
 
@@ -142,6 +142,10 @@ The following are valid logical operators in sack:
 >
 # Less than
 <
+# Greater than or equal to
+>=
+# Less than or equal to
+<=
 # Modulo
 %
 # And
@@ -163,7 +167,6 @@ The following are valid comments:
 ```
 # hello
 #hello
-
 ```
 
 ### If, else, else if
@@ -191,24 +194,88 @@ Print is the only language defined i/o function. It takes in a single variable a
 The following are valid print statements:
 ```
 print ( "hello" );
-print ( a );
+print ( 42 );
+print ( a );  # Only valid if the variable "a" is defined.
 ```
 
 ### Loops
 A loop will itterate between a range of numbers.
+
 Example loops:
 ```
-loop ( a in range, ( 1, 100 ) ) {
+loop ( a in range( 1, 100 ) ) {
 
 	print ( a );
 
 }
 ```
+### Type casting
+Most data types can be converted into any other data type.
+```
+# Convert to int.
+# Can be done with all data types.
+int(x)
+
+# Convert to float.
+# Can be done with all data types.
+float(x)
+
+# Convert to string.
+# Can be done with all data types.
+string(x)
+
+# Convert to bool.
+# Can be done with all data types.
+bool()
+
+# Convert to none.
+# Can be done with all data types.
+none(x)
+```
+
+### NOP
+Incase you need something to do nothing, you can use the `pass` keyword to do nothing.
+
+Example:
+```
+if 2 > 1 {
+
+ print ( "hello" );
+
+} 
+else { 
+
+ pass
+
+}
+```
+
+### Importing functions
+By using the `import` keyword you can use functions from other sack programs.
+
+Example:
+
+in exampleModule.sk:
+```
+func helloworld(){
+    print ( "Helloworld" );
+}
+```
+
+and in exampleProgram.sk:
+```
+import("exampleModule");
+helloworld();
+```
+
+You can only import modules that are in the current directory
+
 
 ### Quirks
 
-- A string added to a string will append the string
-- A string added to a number or a number added to a string will cast the number to a string and then append the string
+- A string added to a string will append the string.
+- A string added to a number or a number added to a string will cast the number to a string and then append the string.
+- A string multiplied by a integer will result in more of the string.
 - Any operation which contains a number and a decimal will result in a decimal.
 - Semicolons are required to end a non commented line. Function declarations and conditionals do not need them as the closing `}` specifies the end.
 - Naming
