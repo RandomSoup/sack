@@ -227,10 +227,6 @@ string(x)
 # Convert to bool.
 # Can be done with all data types.
 bool()
-
-# Convert to none.
-# Can be done with all data types.
-none(x)
 ```
 
 ### NOP
