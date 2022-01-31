@@ -265,7 +265,7 @@ helloworld();
 ```
 
 You can import modules that are in the current directory without specifying the path to the file, else you will need to specify the path.
-By default sack tries to import modlues ending with ".sk".
+By sack first tries to import modlues ending with ".sk", if that fails it will look for files ending with ".sack", if that also fails it will not to compile and just produce errors.
 
 
 ### Quirks
