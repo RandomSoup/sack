@@ -229,23 +229,6 @@ string(x)
 bool()
 ```
 
-### NOP
-Incase you need something to do nothing, you can use the `pass` keyword to do nothing.
-
-Example:
-```
-if 2 > 1 {
-
- print ( "hello" );
-
-} 
-else { 
-
- pass
-
-}
-```
-
 ### Importing functions
 By using the `import` keyword you can use functions from other sack programs.
 
