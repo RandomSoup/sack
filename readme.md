@@ -110,7 +110,7 @@ let a = .1;
 let b = 5.;
 ```
 
-Putting the minus sign in the back is invalid. Because of this and the previous rule, the following are **invalid**
+Putting the minus sign in the back is invalid (unless used for subtraction). Because of this and the previous rule, the following are **invalid**
 ```
 let a = 1-;
 let b = -.5;
@@ -187,16 +187,10 @@ The following are valid logical operators in sack:
 %
 # And
 &&
-# Nand
-!&
 # Or (Not exclusive)
 ||
-# Nor
-!|
 # Xor
 ^^
-# Xnor
-!^
 # Not (Converts numbers to a negative form)
 ! 
 ```
@@ -219,13 +213,13 @@ The following are valid comments:
 ### If, else, else if
 Conditionals are compiler determined functions which check for a certain function.
 
-The following are valid conditionals:
+The following are valid conditionals (assuming `a` is defined):
 ```
-if 2 > 1 {
+if a > 1 {
 
  print ( "Good morning." );
 
-} else if {
+} else if 1 > a {
 
  print( "Good afternoon." );
 
