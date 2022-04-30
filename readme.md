@@ -48,7 +48,17 @@ let add_numbers = function( a, b ) {
 	
 }
 ```
-Functions can return a singular variable using the `return` keyword. Do note that any code after a return is unreachable and will be ignored by the implementation. As such, the following is **invalid** syntax:
+So is this:
+```
+func add_numbers ( a, b ) {
+	
+	let c = a + b;
+	return c;
+	
+}
+let add_numbers_copy = add_numbers;
+```
+Functions can return a singular variable using the `return` keyword. Do note that any code after a return is unreachable and will be ignored by the implementation. As such, the following will result in unreachable code:
 ```
 func add_numbers ( a, b ) {
 
@@ -58,7 +68,6 @@ func add_numbers ( a, b ) {
 
 }
 ```
-The previous example is also valid in conditionals.
 
 ### Variables
 
@@ -67,7 +76,7 @@ Variables are dynamically determined by the implementation. Rules for this are a
 - Strings are variables surrounded by single or double quotes. Because of this, the following are valid strings.
 ```
 let a = "hello";
-let b = "world";
+let b = 'world';
 let c = "100";
 ```
 
@@ -84,12 +93,28 @@ The following are valid Decimals:
 let a = 1.0;
 let b = 0.5;
 let c = 100.25;
+let d = 0.0;
 ```
+
+The following are vaild negative Numbers:
+```
+let a = -1;
+let b = -0.5;
+let c = -0;
+```
+
 
 Trailing or leading decimals on numbers are invalid and should be detected as such by the compiler. Because of this, the following are **invalid**
 ```
 let a = .1;
 let b = 5.;
+```
+
+Putting the minus sign in the back is invalid (unless used for subtraction). Because of this and the previous rule, the following are **invalid**
+```
+let a = 1-;
+let b = -.5;
+let c = 1.-;
 ```
 
 - Boolean values are returnable from functions and conditionals, they represent `true` or `false` values
@@ -98,7 +123,7 @@ The following are valid booleans:
 let a = true;
 let b = false;
 ```
-Because booleans are case sensitive, the following are **invalid**
+Because booleans (along with all other variables) are case sensitive, the following are **invalid**
 ```
 let a = True;
 let b = fAlSe;
@@ -134,24 +159,40 @@ The following are valid logical operators in sack:
 -=
 # Subtraction
 -
+# Multiply
+*
+# Multiply from identifier
+*=
+# Divide
+/
+# Divide from identifier
+/=
 # Check equivalency 
 ==
 # Check anti equivalency
 !=
 # Greater than
 >
-# Less than
-<
 # Greater than or equal to
 >=
+# Less than
+<
 # Less than or equal to
 <=
+# Plus one
+++
+# Minus one
+--
 # Modulo
 %
 # And
 &&
-# Or
+# Or (Not exclusive)
 ||
+# Xor
+^^
+# Not (Converts numbers to a negative form)
+! 
 ```
 By extension `<=` and `>=` are also valid since they are a combination of the geater than and less than operators with the equal operator.
 Operators which check for a condition return a boolean value `true` or `false`.
@@ -172,16 +213,19 @@ The following are valid comments:
 ### If, else, else if
 Conditionals are compiler determined functions which check for a certain function.
 
-The following are valid conditionals:
+The following are valid conditionals (assuming `a` is defined):
 ```
-if 2 > 1 {
+if a > 1 {
 
- print ( "hello" );
+ print ( "Good morning." );
 
-} 
-else { 
+} else if 1 > a {
 
- print ( "goodbye" );
+ print( "Good afternoon." );
+
+} else { 
+
+ print ( "Good night." );
 
 }
 ```
@@ -199,7 +243,7 @@ print ( a );  # Only valid if the variable "a" is defined, else it returns an er
 ```
 
 ### Loops
-A loop will itterate between a range of numbers.
+A loop will itterate between a range of numbers starting at the first number and ending at the last for example `range( 1, 5 )` is equal to `[1, 2, 3, 4, 5]`
 
 Example loops:
 ```
@@ -226,7 +270,7 @@ string(x)
 
 # Convert to bool.
 # Can be done with all data types.
-bool()
+bool(x)
 ```
 
 ### Importing functions
@@ -236,7 +280,7 @@ Example:
 
 in exampleModule.sk:
 ```
-func helloworld(){
+func helloworld() {
     print ( "Helloworld" );
 }
 ```
