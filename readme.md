@@ -201,7 +201,7 @@ The following are valid logical operators in sack:
 ||
 # Xor
 ^^
-# Not (Converts numbers to a negative form)
+# Not (inverts a boolean value)
 ! 
 ```
 By extension `<=` and `>=` are also valid since they are a combination of the geater than and less than operators with the equal operator.
