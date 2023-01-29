@@ -263,12 +263,21 @@ let a = input ( "Please enter your name: " )
 ### Loops
 A loop will itterate between a range of numbers starting at the first number and ending at the last for example `range( 1, 5 )` is equal to `[1, 2, 3, 4, 5]`
 
-The following is an example of valid loop syntax:
+The following is an example of valid loop in range syntax:
 ```
 loop ( a in range( 1, 100 ) ) {
 
 	print ( a );
 
+}
+```
+
+While loops are also possible:
+```
+let a = 1
+loop ( while a < 100 ) {
+	print ( a );
+	a = a + 1;
 }
 ```
 
