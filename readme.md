@@ -342,11 +342,11 @@ Sack defines a few functions for convenience. These are typically related to typ
 Most data types can be converted into any other data type.
 ```
 # Convert to int.
-# Will round a decimal to the nearest int
+# Will round a Decimal to the nearest integer
 int ( x );
 
 # Convert to float.
-# Will convert a number to a decimal
+# Will convert a Number to a Decimal
 # For example, float(3) is equal to 3.0
 float ( x );
 
@@ -360,13 +360,21 @@ You can also quickly get the type of a variable using the `type()` function:
 ```
 x = 3
 
-# prints `Number: 3`
+# prints `Number`
 print ( type ( x ) );
 
 string ( x );
 
-# prints `String: 3`
+# prints `String`
 print ( type ( x ) );
+```
+
+You can also get the length of a list with `len()`:
+```
+let x = [ 1, 2, 3 ];
+
+# returns `2`
+len( x );
 ```
 
 ### Importing functions
@@ -402,7 +410,9 @@ The following rules govern scope in sack.
 Following these rules, the following should print four:
 ```
 let e = 3;
-functi print_e() { print(e); }
+functi print_e() { 
+	print ( e ); 
+}
 e = 4;
 print_e();
 ```
@@ -410,9 +420,9 @@ print_e();
 Likewise, the following should print `[e: 3, x: 5]`
 ```
 let e = 3;
-let list = [e, x = 5];
+let list = [ e, x = 5 ];
 e = 4;
-print(list);
+print ( list );
 ```
 
 ### Quirks
