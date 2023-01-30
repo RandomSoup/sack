@@ -20,6 +20,7 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- Bool (`true` or `false`)
 	- None (`none`)
 	- Identifier
+	- List (Itterable Scope)
 - Sack enforces a style guide to improve readability, it is left up to the implementation whether this is a default warn or error. For simplicity, the style guide will not be described in this spec, however the example code will follow it.
 
 ## Basic Syntax
@@ -107,6 +108,59 @@ if a > b {
 
 	return none;
 
+}
+```
+
+### Lists
+Lists are self contained scope blocks which are itterable. See the scope section for rules on scope.
+
+A list is defined using square brackets like so:
+```
+let x = [ 1, 2, 3 ];
+```
+
+Lists can also contain named data, for instance:
+```
+let a = 2;
+let x = [ 1, a, 3];
+```
+
+Finally you can assign names to data outright:
+```
+let x = [ 1, a: 2, 3 ];
+```
+
+Accessing data in lists can be accomplished in a few ways. You can itterate over a list:
+```
+let x = [ 1, 2, 3 ];
+
+# Lists start at index 0, so this will print numbers 1 to 3
+loop ( num in range ( 0, 2 ) ) {
+	print ( x [ num ] );
+}
+```
+
+Data can also be accessed outright using it's name or a variable's content:
+```
+let a = 2;
+let x = [ 1, a: 2, 3 ];
+
+# returns 3
+print ( x[a] );
+
+# returns 2
+print ( x['a'] );
+```
+
+If you try to access data that is beyond the length of a list, it is a runtime error as opposed to returning `none`
+
+Note that this makes the following code **Invalid**:
+```
+let a = 10;
+let x = [ 1, a: 2, 3 ];
+
+if ( x[a] == none ) {
+    # because the 10th index of the list does not exist this will error on runtime
 }
 ```
 
@@ -281,22 +335,38 @@ loop ( while a < 100 ) {
 }
 ```
 
-### Type casting
+### Language Defined Functions
+Sack defines a few functions for convenience. These are typically related to typecasting, and are reserved keywords.
+
+
 Most data types can be converted into any other data type.
 ```
 # Convert to int.
 # Will round a decimal to the nearest int
-int(x)
+int ( x );
 
 # Convert to float.
 # Will convert a number to a decimal
 # For example, float(3) is equal to 3.0
-float(x)
+float ( x );
 
 # Convert to string.
 # Can be done with all data types.
-string(x)
+string ( x );
 
+```
+
+You can also quickly get the type of a variable using the `type()` function:
+```
+x = 3
+
+# prints `Number: 3`
+print ( type ( x ) );
+
+string ( x );
+
+# prints `String: 3`
+print ( type ( x ) );
 ```
 
 ### Importing functions
@@ -321,6 +391,30 @@ helloworld();
 You can import modules that are in the current directory without specifying the path to the file, else you will need to specify the path.
 By default sack first tries to import modlues ending with ".sk", if that fails it will look for files ending with ".sack", if that also fails it will cause an error on runtime.
 
+### Scope
+The following rules govern scope in sack.
+
+1. You can only access from the global scope or the current scope.
+2. The current scope has access to the scope above it, which has access to the scope above it, etc...
+3. Calling a function makes a new scope with nothing but the global scope above it.
+4. Functions can only access arguments or global vars that are defined before them.
+
+Following these rules, the following should print four:
+```
+let e = 3;
+functi print_e() { print(e); }
+e = 4;
+print_e();
+```
+
+Likewise, the following should print `[e: 3, x: 5]`
+```
+let e = 3;
+let list = [e, x = 5];
+e = 4;
+print(list);
+```
+
 ### Quirks
 
 - A string added to a string will append the string.
@@ -340,7 +434,7 @@ func checker ( num ) {
   let b = num % 5;
   let c = num % 3;
   if a == 0 {
-    print ( "FizzBuzz" )
+    print ( "FizzBuzz" );
   }
   else if b == 0 {
     print ( "Fizz" );
@@ -355,7 +449,7 @@ func checker ( num ) {
 
 loop ( num in range( 1, 100 ) ) {
 
-	checker( num );
+	checker ( num );
 
 }
 ```
