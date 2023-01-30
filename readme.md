@@ -417,7 +417,7 @@ print(list);
 
 ### Quirks
 
-- A string added to a string will append the string.
+- A string added to another string will concatenate the strings.
 - A string added to a number or a number added to a string will cast the number to a string and then append the string.
 - A string multiplied by a integer will result in more of the string.
 - Any operation which contains a number and a decimal will result in a decimal.
