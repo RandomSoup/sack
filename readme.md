@@ -22,6 +22,7 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- Identifier
 	- List (Itterable Scope)
 	- file (File object)
+	- byte (8 bit integer)
 - Sack enforces a style guide to improve readability, it is left up to the implementation whether this is a default warn or error. For simplicity, the style guide will not be described in this spec, however the example code will follow it.
 
 ## Syntax
@@ -112,6 +113,13 @@ if a > b {
 }
 ```
 
+- Byte is an 8 bit integer, and is used for binary data.
+The following are valid bytes:
+```
+let a = 0b00000000;
+let b = 0b11111111;
+```
+
 ### Lists
 Lists are self contained scope blocks which are itterable. See the scope section for rules on scope.
 
@@ -180,6 +188,8 @@ The first argument is the file path, and the second is the mode. The mode can be
 - `r` - Read
 - `w` - Write
 - `a` - Append
+- `rb` - Read Binary
+- `wb` - Write Binary
 
 Files can be read using the `read` keyword, and written to using the `write` keyword.
 
@@ -203,6 +213,26 @@ Flushing a file is done using the `flush` keyword. This is useful for writing to
 let file = open ( "file.txt", "a" );
 write ( file, "hello world" );
 flush ( file );
+close ( file );
+```
+
+Files can also be read and written to using binary data. This is done using the `read` and `write` keywords with the file opened in binary mode. Reading and writing binary data is done using the `byte` type. In this case the file object will be a list of bytes.
+```
+let file = open ( "file.txt", "r" );
+let data = read ( file );
+
+# data is now a list of bytes
+print ( data );
+
+close ( file );
+```
+
+File data can also be printed to the console. The following code will print the contents of a file to the console:
+```
+# file.txt contains the text "hello world"
+let file = open ( "file.txt", "r" );
+# prints "hello world"
+print ( file );
 close ( file );
 ```
 
