@@ -20,7 +20,7 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- Decimal (32 bit float)
 	- Bool (`true` or `false`)
 	- None (`none`)
-- Sack enforces a style guide for improve readability, It is left up to the implementation whether this is a default warn or error.
+- Sack enforces a style guide for improve readability. Compilers should by default warn for violations of the style guide.
 
 ## Basic keywords
 
