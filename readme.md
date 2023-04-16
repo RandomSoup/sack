@@ -21,9 +21,10 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- None (`none`)
 	- Identifier
 	- List (Itterable Scope)
+	- file (File object)
 - Sack enforces a style guide to improve readability, it is left up to the implementation whether this is a default warn or error. For simplicity, the style guide will not be described in this spec, however the example code will follow it.
 
-## Basic Syntax
+## Syntax
 
 ### Variables
 
@@ -162,6 +163,47 @@ let x = [ 1, a: 2, 3 ];
 if ( x[a] == none ) {
     # because the 10th index of the list does not exist this will error on runtime
 }
+```
+
+### Files and Binary
+
+File io is a core feature of Sack, and as such it has it's own syntax.
+
+Files are opened using the `open` keyword, and closed using the `close` keyword. There are multiple modes for opening files, and they are as follows:
+```
+let file1 = open ( "file1.txt", "r" );
+let file2 = open ( "file2.txt", "w" );
+let file3 = open ( "file3.txt", "a" );
+```
+
+The first argument is the file path, and the second is the mode. The mode can be one of the following:
+- `r` - Read
+- `w` - Write
+- `a` - Append
+
+Files can be read using the `read` keyword, and written to using the `write` keyword.
+
+Here is an example of a file being opened, read, and closed:
+```
+let file = open ( "file.txt", "r" );
+let data = read ( file );
+close ( file );
+```
+In this example, the `data` variable will be a string containing the contents of the file.
+
+Here is an example of a file being opened, written to, and closed:
+```
+let file = open ( "file.txt", "w" );
+write ( file, "hello world" );
+close ( file );
+```
+
+Flushing a file is done using the `flush` keyword. This is useful for writing to files that are opened in append mode.
+```
+let file = open ( "file.txt", "a" );
+write ( file, "hello world" );
+flush ( file );
+close ( file );
 ```
 
 ### Functions
