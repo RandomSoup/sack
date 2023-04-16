@@ -48,7 +48,7 @@ let add_numbers = function( a, b ) {
 	
 }
 ```
-So is this:
+This is also **invalid** syntax:
 ```
 func add_numbers ( a, b ) {
 	
@@ -99,10 +99,14 @@ let d = 0.0;
 The following are vaild negative Numbers:
 ```
 let a = -1;
-let b = -0.5;
-let c = -0;
+let b = -0;
 ```
 
+The following are valid negative Decimals:
+```
+let a = -10.43;
+let b = -0.5;
+```
 
 Trailing or leading decimals on numbers are invalid and should be detected as such by the compiler. Because of this, the following are **invalid**
 ```
