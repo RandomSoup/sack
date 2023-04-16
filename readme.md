@@ -19,11 +19,11 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- Decimal (32 bit float)
 	- Bool (`true` or `false`)
 	- None (`none`)
-  - Identifier
+  	- Identifier
 	- List (Itterable Scope)
 	- file (File object)
 	- byte (8 bit integer)
-- Sack enforces a style guide for improve readability. Compilers should by default warn for violations of the style guide.
+- Sack enforces a style guide to improve readability. Compilers should by default warn for violations of the style guide.
 
 ## Syntax
 
