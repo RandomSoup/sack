@@ -62,7 +62,7 @@ let c = 100.25;
 let d = 0.0;
 ```
 
-The following are vaild negative Numbers:
+The following are valid negative Numbers:
 ```
 let a = -1;
 let b = -0;
