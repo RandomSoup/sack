@@ -19,11 +19,11 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- Decimal (32 bit float)
 	- Bool (`true` or `false`)
 	- None (`none`)
-	- Identifier
+  	- Identifier
 	- List (Itterable Scope)
 	- file (File object)
 	- byte (8 bit integer)
-- Sack enforces a style guide to improve readability, it is left up to the implementation whether this is a default warn or error. For simplicity, the style guide will not be described in this spec, however the example code will follow it.
+- Sack enforces a style guide to improve readability. Compilers should by default warn for violations of the style guide.
 
 ## Syntax
 
@@ -62,11 +62,16 @@ let c = 100.25;
 let d = 0.0;
 ```
 
-The following are vaild negative Numbers:
+The following are valid negative Numbers:
 ```
 let a = -1;
+let b = -0;
+```
+
+The following are valid negative Decimals:
+```
+let a = -10.43;
 let b = -0.5;
-let c = -0;
 ```
 
 Trailing or leading decimals on numbers are invalid and should be detected as such by the compiler. Because of this, the following is **invalid**:
