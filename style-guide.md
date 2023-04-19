@@ -41,7 +41,7 @@ if a[0] == -b {
 After every left brace should be an indent of 4 spaces, which should end before the closing right brace. For example:
 ```
 loop (while foo > 2) {
-    print( "Foo is greator than 2" );
+    print( "Foo is greater than 2" );
     foo -= 1;
 }
 ```
@@ -64,7 +64,7 @@ let my_list = [
 ];
 ```
 
-Trailing binary opetators should have the operator on the second line, unless the binop changes the a value. for example:
+Trailing binary operators should have the operator on the second line, unless the binop changes the a value. for example:
 ```
 let sum =
     a_really_long_var_name
