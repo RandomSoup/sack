@@ -73,7 +73,7 @@ func add_numbers ( a, b ) {
 
 Variables are dynamically determined by the implementation. Rules for this are as follows:
 
-- Strings are variables surrounded by single or double quotes. Because of this, the following are valid strings.
+- Strings are an array of characters surrounded by single or double quotes. Because of this, the following are valid strings.
 ```
 let a = "hello";
 let b = 'world';
