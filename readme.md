@@ -1,13 +1,13 @@
 # The Sack programming language
 > Spec v1.0.0 SemVer
 
-Sack is a dynamically typed scripting language for beginner programmers that focusses on readability and ease of use over speed.
+Sack is a dynamically typed scripting language for beginner programmers that focuses on readability and ease of use over speed.
 
 ## Goals
 
 - Sack is Simple. A program is executed from top to bottom. This means asynchronous code is impossible.
 - Sack is small. The specification is minimal, and easy to learn as well as implement.
-- Sack is Extensible. While the specification is not indended to be open ended, It should allow for new features where required.
+- Sack is Extensible. While the specification is not intended to be open ended, It should allow for new features where required.
 - Sack is Easy. Language reserved words should have their basis in common english, and code written in it should prioritize readability.
 
 ## Basic notes
@@ -15,15 +15,14 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 - Sack's default extension is `.sk` or `.sack`. All others are considered invalid by this spec version.
 - Variable types can be one of the following:
 	- String
-	- Number (int)
+	- Number (signed 32 bit int)
 	- Decimal (32 bit float)
 	- Bool (`true` or `false`)
 	- None (`none`)
-  	- Identifier
-	- List (Itterable Scope)
-	- file (File object)
-	- byte (8 bit integer)
-- Sack enforces a style guide to improve readability. Compilers should by default warn for violations of the style guide.
+	- List (Iterable Scope)
+	- File (File object)
+	- Byte (8 bit unsigned int)
+- Sack enforces a style guide to improve readability. Compilers should by default warn for violations of the [style guide](style-guide.md).
 
 ## Syntax
 
@@ -93,7 +92,7 @@ The following are valid booleans:
 let a = true;
 let b = false;
 ```
-Because booleans (along with all other variables) are case sensitive, the following is **invalid**:
+Because booleans (along with all other identifiers) are case sensitive, the following is **invalid**:
 ```
 let a = True;
 let b = fAlSe;
@@ -109,7 +108,7 @@ func a () {
 }
 ```
 
-You can also return none from a failed conditional, however it is reccomended that failed conditionals return false. Here is an example of a conditional that returns `none`:
+You can also return none from a failed conditional, however it is recommended that failed conditionals return false. Here is an example of a conditional that returns `none`:
 ```
 if a > b {
 
@@ -126,7 +125,7 @@ let b = 0b11111111;
 ```
 
 ### Lists
-Lists are self contained scope blocks which are itterable. See the scope section for rules on scope.
+Lists are self contained iterable scope blocks. See the scope section for rules on scope.
 
 A list is defined using square brackets like so:
 ```
