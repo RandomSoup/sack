@@ -257,7 +257,7 @@ func add_numbers ( a, b ) {
 
 Functions can not be retroactively assigned to variables. As such, the following is **invalid** syntax:
 ```
-let add_numbers = function( a, b ) {
+let add_numbers = functi( a, b ) {
 	
 	let c = a + b;
 	return c;
@@ -387,7 +387,7 @@ Similar to print, Input is a language defined input function. It allows for a pr
 
 The following is a valid input statement:
 ```
-let a = input ( "Please enter your name: " )
+let a = input ( "Please enter your name: " );
 ```
 
 ### Loops
@@ -404,10 +404,10 @@ loop ( a in range( 1, 100 ) ) {
 
 While loops are also possible:
 ```
-let a = 1
+let a = 1;
 loop ( while a < 100 ) {
 	print ( a );
-	a = a + 1;
+	a += 1;
 }
 ```
 
@@ -434,12 +434,12 @@ string ( x );
 
 You can also quickly get the type of a variable using the `type()` function:
 ```
-x = 3
+let x = 3;
 
 # prints `Number`
 print ( type ( x ) );
 
-string ( x );
+x = string ( x );
 
 # prints `String`
 print ( type ( x ) );
@@ -450,7 +450,7 @@ You can also get the length of a list with `len()`:
 let x = [ 1, 2, 3 ];
 
 # returns `2`
-len( x );
+print ( len( x ) );
 ```
 
 ### Importing functions
@@ -496,7 +496,7 @@ print_e();
 Likewise, the following should print `[e: 3, x: 5]`
 ```
 let e = 3;
-let list = [ e, x = 5 ];
+let list = [ e, x: 5 ];
 e = 4;
 print ( list );
 ```
