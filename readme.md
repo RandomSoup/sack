@@ -460,13 +460,16 @@ You can also get the length of a list or string with `len()`:
 ```
 let x = [ 1, 2, 3 ];
 
-# prints `3`
+# prints `2`
 print ( len( x ) );
 
 let s = "Test"; 
 
-# prints `4`
+# prints `3`
 print ( len( s ) );
+
+# prints `none`
+print ( len( [] ) );
 ```
 
 ### Importing functions
