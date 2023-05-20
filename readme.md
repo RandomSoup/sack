@@ -112,7 +112,7 @@ let b = fAlSe;
 - None is the default return value for functions, it represents no value.
 The following is a function that returns none:
 ```
-func a () {
+functi a () {
 	
 	print( "hi" );
 	
@@ -303,7 +303,7 @@ Functions are declared using either the `func` or `functi` keywords followed by 
 As an example, here's a function that adds two numbers together:
 
 ```
-func add_numbers ( a, b ) {
+functi add_numbers ( a, b ) {
 
 	let c = a + b;
 	return c;
@@ -323,7 +323,7 @@ let add_numbers = functi( a, b ) {
 
 So is this:
 ```
-func add_numbers ( a, b ) {
+functi add_numbers ( a, b ) {
 	
 	let c = a + b;
 	return c;
@@ -334,7 +334,7 @@ let add_numbers_copy = add_numbers;
 
 Functions can return a singular variable using the `return` keyword. Do note that any code after a return is unreachable and will be ignored by the implementation. As such, the following will result in unreachable code:
 ```
-func add_numbers ( a, b ) {
+functi add_numbers ( a, b ) {
 
 	let c = a + b;
 	return c;
@@ -531,13 +531,26 @@ print ( len( s ) );
 print ( len( [] ) );
 ```
 
+You can get the arguments passed to a function with `args()`:
+```
+functi test ( a, b, c ) {
+	print ( args() );
+}
+```
+Args will also return a list of arguments passed to the program if called outside of a function. with the first argument being the name/path of the program.
+```
+# prints `["example.sk"]`
+print ( args() );
+```
+For this reason, `len( args() )` will always be greater than or equal to 1.
+
 ### Importing functions
 By using the `import` keyword you can use functions from other sack programs.
 
 Example:
 ```
 # exampleModule.sk
-func helloworld() {
+functi helloworld() {
     print ( "Helloworld" );
 }
 ```
@@ -593,7 +606,7 @@ print ( list );
 
 FizzBuzz:
 ```
-func checker ( num ) {
+functi checker ( num ) {
   let a = num % 15;
   let b = num % 5;
   let c = num % 3;
