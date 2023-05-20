@@ -44,6 +44,17 @@ let a = "hi';
 let b = 'hello";
 ```
 
+Strings can be zero indexed, which returns a single character long string. For example:
+```
+let a = "Hello";
+# Prints H
+print( a[0] );
+# Prints true
+print( a[2] == "l" );
+# Throws an error (47 is more than 4)
+print( a[47] );
+```
+
 - Numbers are any variable consisting of digits 0-9.
 The following are valid Numbers:
 ```
@@ -445,12 +456,20 @@ x = string ( x );
 print ( type ( x ) );
 ```
 
-You can also get the length of a list with `len()`:
+You can also get the length of a list or string with `len()`:
 ```
 let x = [ 1, 2, 3 ];
 
-# returns `2`
+# prints `2`
 print ( len( x ) );
+
+let s = "Test"; 
+
+# prints `3`
+print ( len( s ) );
+
+# prints `none`
+print ( len( [] ) );
 ```
 
 ### Importing functions
