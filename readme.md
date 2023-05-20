@@ -194,9 +194,7 @@ File io is a core feature of Sack, and as such it has it's own syntax.
 
 Files are opened using the `open` keyword, and closed using the `close` keyword. There are multiple modes for opening files, and they are as follows:
 ```
-let file1 = open ( "file1.txt", "r" );
-let file2 = open ( "file2.txt", "w" );
-let file3 = open ( "file3.txt", "a" );
+let file1 = open ( "filename", "mode" );
 ```
 
 The first argument is the file path, and the second is the mode. The mode can be one of the following:
@@ -222,6 +220,14 @@ let file = open ( "file.txt", "w" );
 write ( file, "hello world" );
 close ( file );
 ```
+In this case, the file will be overwritten with the text `hello world`. To write to a specific location in a file, you can use the `seek` keyword. This will move the file pointer to a specific location in the file. The following code will write to the 5th byte in the file:
+```
+let file = open ( "file.txt", "w" );
+seek ( file, 5 );
+write ( file, "hello world" );
+close ( file );
+```
+In this case the file will be overwritten with the text `hello world` starting at the 5th byte.
 
 Flushing a file is done using the `flush` keyword. This is useful for writing to files that are opened in append mode.
 ```
@@ -247,8 +253,18 @@ File data can also be printed to the console. The following code will print the 
 # file.txt contains the text "hello world"
 let file = open ( "file.txt", "r" );
 # prints "hello world"
-print ( file );
+let data = read ( file );
+print ( data );
 close ( file );
+```
+
+Files can also be iterated over using the `loop` keyword. The following code will print the contents of a file to the console:
+```
+# file.txt contains the text "hello world"
+let file = open ( "file.txt", "r" );
+loop ( byte in file ) {
+	print ( byte );
+}
 ```
 
 ### Functions
@@ -392,6 +408,13 @@ print ( "hello" );
 print ( 42 );
 print ( a );  # Only valid if the variable "a" is defined, else it returns an error and the program stops.
 ```
+Print can accept the following types:
+- String
+- Number
+- Decimal
+- Byte
+- List
+- Bool
 
 ### Input
 Similar to print, Input is a language defined input function. It allows for a prompt, and will read text entered into the program.
