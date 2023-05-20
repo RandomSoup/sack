@@ -220,14 +220,33 @@ let file = open ( "file.txt", "w" );
 write ( file, "hello world" );
 close ( file );
 ```
-In this case, the file will be overwritten with the text `hello world`. To write to a specific location in a file, you can use the `seek` keyword. This will move the file pointer to a specific location in the file. The following code will write to the 5th byte in the file:
+
+Performing an invalid operation, such as writing to a read only file or vice versa, will result in an error. For example, the following code will error:
+```
+let file = open ( "file.txt", "r" );
+write ( file, "hello world" );
+close ( file );
+```
+
+To write to a specific location in a file, you can use the `seek` keyword. This will move the file pointer to a specific location in the file. The following code will write to the 5th byte in the file:
 ```
 let file = open ( "file.txt", "w" );
 seek ( file, 5 );
 write ( file, "hello world" );
 close ( file );
 ```
-In this case the file will be overwritten with the text `hello world` starting at the 5th byte.
+Overseeking will result in an error. For example, the following code will error:
+```
+let file = open ( "file.txt", "w" );
+
+# file.txt contains the string "hello world"
+# The error will occur when attempting to seek, not when writing
+seek ( file, 100 );
+
+# This will not be reached
+write ( file, "hello world" );
+close ( file );
+```
 
 Flushing a file is done using the `flush` keyword. This is useful for writing to files that are opened in append mode.
 ```
@@ -239,7 +258,7 @@ close ( file );
 
 Files can also be read and written to using binary data. This is done using the `read` and `write` keywords with the file opened in binary mode. Reading and writing binary data is done using the `byte` type. In this case the file object will be a list of bytes.
 ```
-let file = open ( "file.txt", "r" );
+let file = open ( "file.txt", "rb" );
 let data = read ( file );
 
 # data is now a list of bytes
@@ -258,12 +277,22 @@ print ( data );
 close ( file );
 ```
 
-Files can also be iterated over using the `loop` keyword. The following code will print the contents of a file to the console:
+Files can be iterated over using the `loop` keyword. The following code will print the contents of a file to the console:
+```
+# file.txt contains the text "hello world"
+let file = open ( "file.txt", "rb" );
+let data = read ( file );
+loop ( byte in data ) {
+	print ( byte );
+}
+```
+alternatively:
 ```
 # file.txt contains the text "hello world"
 let file = open ( "file.txt", "r" );
-loop ( byte in file ) {
-	print ( byte );
+let data = read ( file );
+loop ( line in data ) {
+	print ( line );
 }
 ```
 
@@ -464,9 +493,16 @@ float ( x );
 # Can be done with all data types.
 string ( x );
 
-```
+# Convert a byte to a string.
+string ( x );
 
-You can also quickly get the type of a variable using the `type()` function:
+# Convert a string to a list of bytes.
+# if the string is a single character, it will return a single byte.
+byte ( x );
+```
+When converting between types, invalid conversions will return `none`.
+
+You can quickly get the type of a variable using the `type()` function:
 ```
 let x = 3;
 
@@ -479,7 +515,7 @@ x = string ( x );
 print ( type ( x ) );
 ```
 
-You can also get the length of a list or string with `len()`:
+You can get the length of a list or string with `len()`:
 ```
 let x = [ 1, 2, 3 ];
 
