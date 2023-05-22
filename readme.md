@@ -514,6 +514,14 @@ if ( b in a ) {
 }
 ```
 
+Invalid types will result in an error:
+```
+let a = "fourty-seven";
+let b = 47;
+
+# This will result in an error
+print ( b in a );
+```
 
 ### Loops
 A loop will itterate between a range of numbers starting at the first number and ending at the last for example `range( 1, 5 )` is equal to `[1, 2, 3, 4, 5]`
