@@ -188,6 +188,26 @@ if ( x[a] == none ) {
 }
 ```
 
+Lists can be appended to:
+```
+let x = [ 1, 2, 3 ];
+x += 4;
+
+let y = []
+y += 1;
+
+# x is now [ 1, 2, 3, 4 ]
+# y is now [ 1 ]
+```
+
+Lists can also be concatenated:
+```
+let x = [ 1, 2, 3 ];
+x += [ 4, 5, 6 ];
+
+# x is now [ 1, 2, 3, 4, 5, 6 ]
+```
+
 ### Files and Binary
 
 File io is a core feature of Sack, and as such it has it's own syntax.
