@@ -542,7 +542,7 @@ Args will also return a list of arguments passed to the program if called outsid
 # prints `["example.sk"]`
 print ( args() );
 ```
-For this reason, `len( args() )` will always be greater than or equal to 1.
+If the function that is called has no arguments, `args()` will return `none`, however if args is called in the global scope it's length will always be greater than 0.
 
 ### Importing functions
 By using the `import` keyword you can use functions from other sack programs.
