@@ -208,6 +208,14 @@ x += [ 4, 5, 6 ];
 # x is now [ 1, 2, 3, 4, 5, 6 ]
 ```
 
+To append a list into a list, surround the list with brackets:
+```
+let x = [ 1, 2, 3 ];
+x += [[ 4, 5, 6 ]];
+
+# x is now [ 1, 2, 3, [ 4, 5, 6 ] ]
+```
+
 ### Files and Binary
 
 File io is a core feature of Sack, and as such it has it's own syntax.
