@@ -481,6 +481,40 @@ The following is a valid input statement:
 let a = input ( "Please enter your name: " );
 ```
 
+### The `in` keyword
+The `in` keyword is used to check if a value is in a list or string. It returns a boolean value.
+
+The following are valid `in` statements:
+```
+let a = "hello";
+let b = "h";
+# prints true
+print ( b in a );
+
+let c = "z";
+# prints false
+print ( c in a );
+
+let d = [ 1, 2, 3, 4, 5 ];
+let e = 1;
+# prints true
+print ( e in d );
+
+let f = 6;
+# prints false
+print ( f in d );
+```
+
+It follows that conditional statements can also use the `in` keyword:
+```
+let a = "hello";
+let b = "h";
+if ( b in a ) {
+	print ( "hello contains h" );
+}
+```
+
+
 ### Loops
 A loop will itterate between a range of numbers starting at the first number and ending at the last for example `range( 1, 5 )` is equal to `[1, 2, 3, 4, 5]`
 
