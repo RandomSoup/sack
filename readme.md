@@ -22,6 +22,7 @@ Sack is a dynamically typed scripting language for beginner programmers that foc
 	- List (Iterable Scope)
 	- File (File object)
 	- Byte (8 bit unsigned int)
+	- Function
 - Sack enforces a style guide to improve readability. Compilers should by default warn for violations of the [style guide](style-guide.md).
 
 ## Syntax
@@ -136,7 +137,7 @@ let b = 0b11111111;
 ```
 
 ### Lists
-Lists are self contained iterable scope blocks. See the scope section for rules on scope.
+Lists are self contained iterable scope blocks.
 
 A list is defined using square brackets like so:
 ```
@@ -333,31 +334,73 @@ As an example, here's a function that adds two numbers together:
 ```
 functi add_numbers ( a, b ) {
 
-	let c = a + b;
-	return c;
+	let ret = a + b;
+	return ret;
 
 }
 ```
 
-Functions can not be retroactively assigned to variables. As such, the following is **invalid** syntax:
+Functions aren't allowed to be anonymous. As such, the following is **invalid** syntax:
 ```
-let add_numbers = functi( a, b ) {
+functi( a, b ) {
 	
-	let c = a + b;
-	return c;
+	let ret = a + b;
+	return ret;
 	
 }
 ```
 
-So is this:
+Functions can be assigned to variables however:
 ```
 functi add_numbers ( a, b ) {
 	
-	let c = a + b;
-	return c;
+	let ret = a + b;
+	return ret;
 	
 }
 let add_numbers_copy = add_numbers;
+```
+
+Functions can also be overloaded, this is done based on the number of arguments:
+```
+functi add_numbers ( a, b ) {
+    
+    let ret = a + b;
+    return ret;
+    
+}
+
+functi add_numbers ( a, b, c ) {
+    
+    let ret = a + b + c;
+    return ret;
+
+}
+```
+
+The overloaded function to use is chosen when it is called, this may seem obvious but consider the following (which is valid):
+```
+functi add_numbers ( a, b ) {
+    
+    let ret = a + b;
+    return ret;
+    
+}
+
+functi add_numbers ( a, b, c ) {
+    
+    let ret = a + b + c;
+    return ret;
+
+}
+
+// Is this add_numbers with 2 or 3 args? It's both!
+let adder = add_numbers;
+
+// Calls the 2 argument version
+adder ( 47, 17 );
+// Calls the 3 argument version
+adder ( 21, 5, 1940 );
 ```
 
 Functions can return a singular variable using the `return` keyword. Do note that any code after a return is unreachable and will be ignored by the implementation. As such, the following will result in unreachable code:
@@ -583,6 +626,9 @@ x = string ( x );
 
 # prints `String`
 print ( type ( x ) );
+
+# prints `Functi`
+print ( type ( print ) );
 ```
 
 You can get the length of a list or string with `len()`:
@@ -643,6 +689,11 @@ The following rules govern scope in sack.
 2. The current scope has access to the scope above it, which has access to the scope above it, etc...
 3. Calling a function makes a new scope with nothing but the global scope above it.
 4. Functions can only access arguments or global vars that are defined before them.
+
+There are also some rules for defining functions and variables:
+1. Functions and variables can not be defined with the name of a builtin function.
+2. Functions can not be defined if an existing variable has that name, or if a function with the same number of args exists.
+3. Variables can not be defined if a function with the same name exists.
 
 Following these rules, the following should print four:
 ```
