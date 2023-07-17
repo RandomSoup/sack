@@ -587,6 +587,26 @@ loop ( while a < 100 ) {
 }
 ```
 
+The keywords `break` and `continue` will exit the loop, or continue to the next itteration respectively.
+
+```
+# Looping from 1 to 10, but breaking out at 5
+let a = 1;
+loop ( while a <= 10 ) {
+	if a == 5 {
+		break;
+	}
+}
+
+# Looping from 1 to 10 but only the odd numbers
+a = 1;
+loop ( while a <= 10 ) {
+	if a % 2 {
+		continue;
+	}
+}
+```
+
 ### Language Defined Functions
 Sack defines a few functions for convenience. These are typically related to typecasting, and are reserved keywords.
 
