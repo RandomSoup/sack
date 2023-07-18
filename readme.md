@@ -167,7 +167,7 @@ let x = [ 0, :a, 2]
 let y = [ :3 ]
 ```
 
-Accessing data in lists can be accomplished in a few ways. You can itterate over a list:
+Accessing data in lists can be accomplished in a few ways. You can iterate over a list:
 ```
 let x = [ 1, 2, 3 ];
 
@@ -231,7 +231,7 @@ x += [[ 4, 5, 6 ]];
 
 ### Files and Binary
 
-File io is a core feature of Sack, and as such it has it's own syntax.
+File IO is a core feature of Sack, and as such it has it's own syntax.
 
 Files are opened using the `open` keyword, and closed using the `close` keyword. There are multiple modes for opening files, and they are as follows:
 ```
@@ -473,7 +473,7 @@ The following are valid logical operators in sack:
 # Not (inverts a boolean value)
 ! 
 ```
-By extension `<=` and `>=` are also valid since they are a combination of the geater than and less than operators with the equal operator.
+By extension `<=` and `>=` are also valid since they are a combination of the greater than and less than operators with the equal operator.
 Operators which check for a condition return a boolean value `true` or `false`.
 
 ### Comments
@@ -571,7 +571,7 @@ if ( b in a ) {
 
 Invalid types will result in an error:
 ```
-let a = "fourty-seven";
+let a = "forty-seven";
 let b = 47;
 
 # This will result in an error
@@ -579,7 +579,7 @@ print ( b in a );
 ```
 
 ### Loops
-A loop will itterate between a range of numbers starting at the first number and ending at the last for example `range( 1, 5 )` is equal to `[1, 2, 3, 4, 5]`
+A loop will iterate between a range of numbers starting at the first number and ending at the last for example `range( 1, 5 )` is equal to `[1, 2, 3, 4, 5]`
 
 The following is an example of valid loop in range syntax:
 ```
@@ -599,7 +599,7 @@ loop ( while a < 100 ) {
 }
 ```
 
-The keywords `break` and `continue` will exit the loop, or continue to the next itteration respectively.
+The keywords `break` and `continue` will exit the loop, or continue to the next iteration respectively.
 
 ```
 # Looping from 1 to 10, but breaking out at 5
@@ -712,7 +712,7 @@ helloworld();
 ```
 
 You can import modules that are in the current directory without specifying the path to the file, else you will need to specify the path.
-By default sack first tries to import modlues ending with ".sk", if that fails it will look for files ending with ".sack", if that also fails it will cause an error on runtime.
+By default sack first tries to import modules ending with ".sk", if that fails it will look for files ending with ".sack", if that also fails it will cause an error on runtime.
 
 ### Scope
 The following rules govern scope in sack.
