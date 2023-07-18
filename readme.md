@@ -147,12 +147,24 @@ let x = [ 1, 2, 3 ];
 Lists can also contain named data, for instance:
 ```
 let a = 2;
+# [ 1, a: 2, 3 ]
 let x = [ 1, a, 3];
 ```
 
 Finally you can assign names to data outright:
 ```
 let x = [ 1, a: 2, 3 ];
+```
+
+You can put a variable's content in a list (without giving it a name in the list) like so:
+```
+let a = 1;
+# [ 0, 1, 2]
+let x = [ 0, :a, 2]
+
+# Consequently, this is also possible
+# [ 3 ]
+let y = [ :3 ]
 ```
 
 Accessing data in lists can be accomplished in a few ways. You can itterate over a list:
