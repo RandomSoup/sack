@@ -705,7 +705,7 @@ functi helloworld() {
 
 ```
 # exampleProgram.sk
-import ( "exampleModule" );
+import "exampleModule";
 
 # prints "Helloworld" to the console
 helloworld();
@@ -713,6 +713,28 @@ helloworld();
 
 You can import modules that are in the current directory without specifying the path to the file, else you will need to specify the path.
 By default sack first tries to import modules ending with ".sk", if that fails it will look for files ending with ".sack", if that also fails it will cause an error on runtime.
+
+Because there are multiple valid extensions for a Sack file, you can also specify the extension directly. Be careful though, as a mismatch will error:
+```
+import "exampleModule.sk";
+
+# The following will error, as the file extension is incorrect
+import "exampleModule.sack";
+```
+
+You may also import a package, by simply importing a folder:
+```
+# examplePackage/main.sk
+functi helloworld() {
+    print ( "Helloworld" );
+}
+
+# exampleProgram.sk
+import "examplePackage";
+
+# prints "Helloworld" to the console
+helloworld();
+```
 
 ### Scope
 The following rules govern scope in sack.
