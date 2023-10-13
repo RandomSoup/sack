@@ -406,12 +406,12 @@ functi add_numbers ( a, b, c ) {
 
 }
 
-// Is this add_numbers with 2 or 3 args? It's both!
+# Is this add_numbers with 2 or 3 args? It's both!
 let adder = add_numbers;
 
-// Calls the 2 argument version
+# Calls the 2 argument version
 adder ( 47, 17 );
-// Calls the 3 argument version
+# Calls the 3 argument version
 adder ( 21, 5, 1940 );
 ```
 
@@ -509,7 +509,7 @@ if a > 1 {
 }
 ```
 
-Else if is valid because it's a combination of the else and the if operator, it is not sytatically unique.
+Else if is valid because it's a combination of the else and the if operator, it is not syntactically unique.
 
 ### Print
 Print is a language defined output function. It takes in a single variable and returns the output to the terminal appending a newline
