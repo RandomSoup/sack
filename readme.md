@@ -38,6 +38,11 @@ let b = 'world';
 let c = "100";
 ```
 
+Chaining declarations is also valid:
+```
+let a = "hello", b = 'world', c = "100";
+```
+
 Strings may not have mismatching quotes.
 As such, the following is  **invalid** syntax:
 ```
