@@ -167,7 +167,7 @@ let a = 1;
 # [ 0, 1, 2]
 let x = [ 0, :a, 2]
 
-# Consequently, this is also possible
+# This is also possible, although not very useful
 # [ 3 ]
 let y = [ :3 ]
 ```
@@ -232,6 +232,14 @@ let x = [ 1, 2, 3 ];
 x += [[ 4, 5, 6 ]];
 
 # x is now [ 1, 2, 3, [ 4, 5, 6 ] ]
+```
+
+Lists can be multiplied:
+```
+let x = [ 1 ] * 3;
+x += [ 2, 3 ] * 2;
+
+# x is now [ 1, 1, 1, 2, 3, 2, 3 ]
 ```
 
 ### Files and Binary
