@@ -612,6 +612,13 @@ loop ( while a < 100 ) {
 }
 ```
 
+There is a quicker way to write a infinite loop:
+```
+loop {
+    print("This will print forever!");
+}
+```
+
 The keywords `break` and `continue` will exit the loop, or continue to the next iteration respectively.
 
 ```
