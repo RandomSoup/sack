@@ -674,6 +674,11 @@ let x = 3;
 # prints `Number`
 print ( type ( x ) );
 
+x = 5.25;
+
+# prints `Decimal`
+print ( type ( x ) );
+
 x = string ( x );
 
 # prints `String`
@@ -711,6 +716,13 @@ Args will also return a list of arguments passed to the program if called outsid
 print ( args() );
 ```
 If the function that is called has no arguments, `args()` will return `none`, however if args is called in the global scope it's length will always be greater than 0.
+The `rand()` function can be used to get a random number between 0 and 1 (0 included), for example:
+```
+let e = rand();
+# Nobody knows exactly what e is a now
+# But it's know that type(e) == "Decimal"
+# And that 0 <= e && e < 1
+``
 
 ### Importing functions
 By using the `import` keyword you can use functions from other sack programs.
