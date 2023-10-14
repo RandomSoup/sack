@@ -194,16 +194,35 @@ print ( x[a] );
 print ( x['a'] );
 ```
 
-If you try to access data that is beyond the length of a list, it is a runtime error as opposed to returning `none`
+If you try to access a key that isn't in the list, it returns `none`
 
-Note that this makes the following code **Invalid**:
+For example:
 ```
-let a = 10;
-let x = [ 1, a: 2, 3 ];
+let x = [ 1, 2, 3 ];
 
-if ( x[a] == none ) {
-    # because the 10th index of the list does not exist this will error on runtime
+if ( x[10] == none ) {
+    // 10 is way outside the list! So this executes
+    print("Lists much be shorter than 10!");
 }
+```
+
+By extention, setting a key to `none` deletes it:
+```
+let x = [ 1, 2, 3 ];
+
+# 2
+print ( x[1] );
+
+x[1] = none:
+
+# 3
+print ( x[1] );
+```
+
+However, this does mean that having `none` as keys is ignored:
+```
+# Prints 4, but because print returns none, x is set to [4]
+let x = [ 4, print(4) ];
 ```
 
 Lists can be appended to:
