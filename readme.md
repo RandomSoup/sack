@@ -38,6 +38,11 @@ let b = 'world';
 let c = "100";
 ```
 
+Chaining declarations is also valid:
+```
+let a = "hello", b = 'world', c = "100";
+```
+
 Strings may not have mismatching quotes.
 As such, the following is  **invalid** syntax:
 ```
@@ -162,7 +167,7 @@ let a = 1;
 # [ 0, 1, 2]
 let x = [ 0, :a, 2]
 
-# Consequently, this is also possible
+# This is also possible, although not very useful
 # [ 3 ]
 let y = [ :3 ]
 ```
@@ -189,16 +194,35 @@ print ( x[a] );
 print ( x['a'] );
 ```
 
-If you try to access data that is beyond the length of a list, it is a runtime error as opposed to returning `none`
+If you try to access a key that isn't in the list, it returns `none`
 
-Note that this makes the following code **Invalid**:
+For example:
 ```
-let a = 10;
-let x = [ 1, a: 2, 3 ];
+let x = [ 1, 2, 3 ];
 
-if ( x[a] == none ) {
-    # because the 10th index of the list does not exist this will error on runtime
+if ( x[10] == none ) {
+    // 10 is way outside the list! So this executes
+    print("Lists much be shorter than 10!");
 }
+```
+
+By extention, setting a key to `none` deletes it:
+```
+let x = [ 1, 2, 3 ];
+
+# 2
+print ( x[1] );
+
+x[1] = none:
+
+# 3
+print ( x[1] );
+```
+
+However, this does mean that having `none` as keys is ignored:
+```
+# Prints 4, but because print returns none, x is set to [4]
+let x = [ 4, print(4) ];
 ```
 
 Lists can be appended to:
@@ -227,6 +251,14 @@ let x = [ 1, 2, 3 ];
 x += [[ 4, 5, 6 ]];
 
 # x is now [ 1, 2, 3, [ 4, 5, 6 ] ]
+```
+
+Lists can be multiplied:
+```
+let x = [ 1 ] * 3;
+x += [ 2, 3 ] * 2;
+
+# x is now [ 1, 1, 1, 2, 3, 2, 3 ]
 ```
 
 ### Files and Binary
@@ -406,12 +438,12 @@ functi add_numbers ( a, b, c ) {
 
 }
 
-// Is this add_numbers with 2 or 3 args? It's both!
+# Is this add_numbers with 2 or 3 args? It's both!
 let adder = add_numbers;
 
-// Calls the 2 argument version
+# Calls the 2 argument version
 adder ( 47, 17 );
-// Calls the 3 argument version
+# Calls the 3 argument version
 adder ( 21, 5, 1940 );
 ```
 
@@ -509,7 +541,7 @@ if a > 1 {
 }
 ```
 
-Else if is valid because it's a combination of the else and the if operator, it is not sytatically unique.
+Else if is valid because it's a combination of the else and the if operator, it is not syntactically unique.
 
 ### Print
 Print is a language defined output function. It takes in a single variable and returns the output to the terminal appending a newline
@@ -599,6 +631,13 @@ loop ( while a < 100 ) {
 }
 ```
 
+There is a quicker way to write a infinite loop:
+```
+loop {
+    print("This will print forever!");
+}
+```
+
 The keywords `break` and `continue` will exit the loop, or continue to the next iteration respectively.
 
 ```
@@ -654,6 +693,11 @@ let x = 3;
 # prints `Number`
 print ( type ( x ) );
 
+x = 5.25;
+
+# prints `Decimal`
+print ( type ( x ) );
+
 x = string ( x );
 
 # prints `String`
@@ -691,6 +735,13 @@ Args will also return a list of arguments passed to the program if called outsid
 print ( args() );
 ```
 If the function that is called has no arguments, `args()` will return `none`, however if args is called in the global scope it's length will always be greater than 0.
+The `rand()` function can be used to get a random number between 0 and 1 (0 included), for example:
+```
+let e = rand();
+# Nobody knows exactly what e is a now
+# But it's known that type(e) == "Decimal"
+# And that 0 <= e && e < 1
+``
 
 ### Importing functions
 By using the `import` keyword you can use functions from other sack programs.
