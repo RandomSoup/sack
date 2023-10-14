@@ -720,7 +720,7 @@ The `rand()` function can be used to get a random number between 0 and 1 (0 incl
 ```
 let e = rand();
 # Nobody knows exactly what e is a now
-# But it's know that type(e) == "Decimal"
+# But it's known that type(e) == "Decimal"
 # And that 0 <= e && e < 1
 ``
 
