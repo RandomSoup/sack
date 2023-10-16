@@ -261,6 +261,17 @@ x += [ 2, 3 ] * 2;
 # x is now [ 1, 1, 1, 2, 3, 2, 3 ]
 ```
 
+Lists cannot be multiplied if they *have* named keys, but may still be multiplied if they *had* named keys:
+```
+let x = [1, 2, a: 6 ];
+// Invalid, x has named keys
+x * 2;
+// Remove the named key
+x['a'] = none;
+// Valid, x no longer has named keys
+x * 2;
+```
+
 ### Files and Binary
 
 File IO is a core feature of Sack, and as such it has it's own syntax.
