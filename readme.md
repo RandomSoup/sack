@@ -752,7 +752,7 @@ let e = rand(5, 47);
 # Nobody knows exactly what e is a now
 # But it's known that type(e) == "Number"
 # And that 5 <= e && e <= 47
-``
+```
 
 ### Importing functions
 By using the `import` keyword you can use functions from other sack programs.
