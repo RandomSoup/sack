@@ -746,12 +746,12 @@ Args will also return a list of arguments passed to the program if called outsid
 print ( args() );
 ```
 If the function that is called has no arguments, `args()` will return `none`, however if args is called in the global scope it's length will always be greater than 0.
-The `rand()` function can be used to get a random number between 0 and 1 (0 included), for example:
+The `rand(min, max)` function can be used to get a random number between `min` and `max` (inclusive), for example:
 ```
-let e = rand();
+let e = rand(5, 47);
 # Nobody knows exactly what e is a now
-# But it's known that type(e) == "Decimal"
-# And that 0 <= e && e < 1
+# But it's known that type(e) == "Number"
+# And that 5 <= e && e <= 47
 ``
 
 ### Importing functions
