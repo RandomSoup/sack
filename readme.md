@@ -237,6 +237,29 @@ y += 1;
 # y is now [ 1 ]
 ```
 
+Lists can have new keys added:
+```
+let x = [];
+x["a"] = 1;
+# 1
+print ( x["a"] );
+
+# This doesn't just work for named keys, the first numeric index beyond the
+# length of the list can be set, and has the same effect as appending does
+x[1] = 47;
+# [ a: 1, 47 ]
+print ( x ):
+
+# Trying to do this with none will have no effect
+x[2] = none;
+x["foo"] = none;
+# [ a: 1, 47 ]
+print ( x ):
+
+# Going more than one index beyond will raise an error
+x[3] = 5.25;
+```
+
 Lists can also be concatenated:
 ```
 let x = [ 1, 2, 3 ];
