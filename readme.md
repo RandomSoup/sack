@@ -237,6 +237,29 @@ y += 1;
 # y is now [ 1 ]
 ```
 
+Lists can have new keys added:
+```
+let x = [];
+x["a"] = 1;
+# 1
+print ( x["a"] );
+
+# This doesn't just work for named keys, the first numeric index beyond the
+# length of the list can be set, and has the same effect as appending does
+x[1] = 47;
+# [ a: 1, 47 ]
+print ( x ):
+
+# Trying to do this with none will have no effect
+x[2] = none;
+x["foo"] = none;
+# [ a: 1, 47 ]
+print ( x ):
+
+# Going more than one index beyond will raise an error
+x[3] = 5.25;
+```
+
 Lists can also be concatenated:
 ```
 let x = [ 1, 2, 3 ];
@@ -259,6 +282,17 @@ let x = [ 1 ] * 3;
 x += [ 2, 3 ] * 2;
 
 # x is now [ 1, 1, 1, 2, 3, 2, 3 ]
+```
+
+Lists cannot be multiplied if they *have* named keys, but may still be multiplied if they *had* named keys:
+```
+let x = [1, 2, a: 6 ];
+# Invalid, x has named keys
+x * 2;
+# Remove the named key
+x['a'] = none;
+# Valid, x no longer has named keys
+x * 2;
 ```
 
 ### Files and Binary
@@ -735,13 +769,13 @@ Args will also return a list of arguments passed to the program if called outsid
 print ( args() );
 ```
 If the function that is called has no arguments, `args()` will return `none`, however if args is called in the global scope it's length will always be greater than 0.
-The `rand()` function can be used to get a random number between 0 and 1 (0 included), for example:
+The `rand(min, max)` function can be used to get a random number between `min` and `max` (inclusive), for example:
 ```
-let e = rand();
+let e = rand(5, 47);
 # Nobody knows exactly what e is a now
-# But it's known that type(e) == "Decimal"
-# And that 0 <= e && e < 1
-``
+# But it's known that type(e) == "Number"
+# And that 5 <= e && e <= 47
+```
 
 ### Importing functions
 By using the `import` keyword you can use functions from other sack programs.
