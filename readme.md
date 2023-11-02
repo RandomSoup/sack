@@ -507,7 +507,6 @@ append(ref my_list, 2);
 print(my_list);
 ```
 
-<!-- TODO: I don't like this wording -->
 When the first argument is a ref, you can use the dot operator on a variable to pass it by ref (the rest of the call continues as normal), so this example does the same thing as the previous one:
 ```
 functi append(ref list, item) {
@@ -539,7 +538,6 @@ set_to_zero(not_zero);
 print(not_zero);
 ```
 
-<!-- TODO: Have Nobody look this over, I'm not to sure about it -->
 Because of this, the `ref` keyword is still needed when passing a reference argument as a reference argument:
 ```
 functi add_one(ref i) {
@@ -577,8 +575,6 @@ foo.add(bar);
 # Raises an error
 add(foo, ref bar);
 ```
-
-<!-- TODO: Should all lvalues be allowed to be used as refs? -->
 
 ### Logical operators
 
