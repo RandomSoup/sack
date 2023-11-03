@@ -492,6 +492,90 @@ functi add_numbers ( a, b ) {
 }
 ```
 
+#### Reference arguments
+
+A special type of argument functions can take is called a reference argument. It's a refrence to variable or another argument. They are declared by putting the `ref` keyword before the argument name, and can be used by passing a reference (done by putting the `ref` keyword before a variable oe argument), for instance:
+```
+functi append(ref list, item) {
+    # Appends item to list
+    list += [item];
+}
+
+let my_list = [];
+append(ref my_list, 2);
+# Prints "[2]"
+print(my_list);
+```
+
+When the first argument is a ref, you can use the dot operator on a variable to pass it by ref (the rest of the call continues as normal), so this example does the same thing as the previous one:
+```
+functi append(ref list, item) {
+    # Appends item to list
+    list += [item];
+}
+
+let my_list = [];
+# Exactly the same as `append(ref my_list, 2)`
+my_list.append(2);
+# Prints "[2]"
+print(my_list);
+```
+
+All modifications to the reference argument are reflected onto the variable being referenced, and reads are done on the underlying value. For example:
+```
+# This function does not work
+functi set_to_zero(ref i) {
+    # This copies the underlying value, not the reference
+    let thing = i;    
+    thing = 0;
+    # The correct way to do it is:
+    # i = 0;
+}
+
+let not_zero = 47;
+set_to_zero(not_zero);
+# Because the value was copied it's still not zero, so this prints "47"
+print(not_zero);
+```
+
+Because of this, the `ref` keyword is still needed when passing a reference argument as a reference argument:
+```
+functi add_one(ref i) {
+    i += 1;
+}
+
+functi add(ref a, ref b) {
+    if (b == 1) {
+        # This ref keyword is required
+        add_one(ref a);
+    } else {
+        a += b;
+    }
+}
+```
+
+Because it is illegal to pass a ref to a non-ref, or vice versa, Sack allows for them to be overloaded:
+```
+functi add(a, b) {
+    return a + b;
+}
+
+functi add(ref a, b) {
+    a += b;
+}
+
+let foo = 4, bar = 7;
+
+# Calls the first add
+add(1, 2);
+add(foo, bar);
+# Calls the second add
+add(ref foo, bar);
+foo.add(bar);
+# Raises an error
+add(foo, ref bar);
+```
+
 ### Logical operators
 
 The following are valid logical operators in sack:
