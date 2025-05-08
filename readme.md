@@ -76,7 +76,6 @@ let b = 'hello";
 ```
 
 **Strings** can be zero indexed, which returns a single character long string. For example:
-
 ```
 let a = "Hello";
 # Prints H
