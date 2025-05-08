@@ -494,7 +494,7 @@ functi add_numbers ( a, b ) {
 
 #### Reference arguments
 
-A special type of argument functions can take is called a reference argument. It's a refrence to variable or another argument. They are declared by putting the `ref` keyword before the argument name, and can be used by passing a reference (done by putting the `ref` keyword before a variable oe argument), for instance:
+A special type of argument functions can take is called a reference argument. It's a refrence to variable or another argument. They are declared by putting the `ref` keyword before the argument name, and can be used by passing a reference (done by putting the `ref` keyword before a variable or argument), for instance:
 ```
 functi append(ref list, item) {
     # Appends item to list
@@ -533,7 +533,7 @@ functi set_to_zero(ref i) {
 }
 
 let not_zero = 47;
-set_to_zero(not_zero);
+set_to_zero(ref not_zero);
 # Because the value was copied it's still not zero, so this prints "47"
 print(not_zero);
 ```
